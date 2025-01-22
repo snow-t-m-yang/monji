@@ -16,21 +16,22 @@ struct AuthDataResultModel {
     init(user: User) {
         self.uid = user.uid
         self.email = user.email
+        // Use a string for Firebase type compatibility
         self.photoUrl = user.photoURL?.absoluteString
     }
 }
 
 final class AuthManager {
     static let shared = AuthManager()
-    private init() {
 
-    }
+    private init() {}
 
     func createUser(email: String, password: String) async throws
         -> AuthDataResultModel
     {
         let authDataResult = try await Auth.auth().createUser(
             withEmail: email, password: password)
+
         return AuthDataResultModel(user: authDataResult.user)
     }
 }

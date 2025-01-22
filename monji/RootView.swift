@@ -8,9 +8,23 @@
 import SwiftUI
 
 struct RootView: View {
+
+    @State private var showSignInView: Bool = false
+
     var body: some View {
-        NavigationStack {
-            AuthView()
+        ZStack {
+            NavigationStack {
+                SettingView(showSignInView: $showSignInView)
+            }
+        }
+        .onAppear {
+            let user = try? AuthManager.shared.getUser()
+            showSignInView = user == nil
+        }
+        .fullScreenCover(isPresented: $showSignInView) {
+            NavigationStack {
+                AuthView()
+            }
         }
     }
 }

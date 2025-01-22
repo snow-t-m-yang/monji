@@ -11,18 +11,18 @@ import SwiftUI
 struct AuthView: View {
     var body: some View {
         VStack {
+            Spacer()
             NavigationLink {
                 SignInEmailView()
             } label: {
                 Text("Sign In With Email")
                     .font(.headline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color("primary-background"))
                     .frame(maxWidth: .infinity)
                     .frame(height: 55)
-                    .background(.black.opacity(0.9))
+                    .background(Color("primary-foreground"))
                     .cornerRadius(30)
             }
-            Spacer()
         }
         .padding()
         .navigationTitle("Sign In")

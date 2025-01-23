@@ -13,41 +13,63 @@ final class SignInWithEmailViewModel {
     var email: String = ""
     var password: String = ""
 
-    func signIn() {
+    func signUp() async throws {
         guard !email.isEmpty, !password.isEmpty else {
             print("No email or password found.")
             return
         }
 
-        Task {
-            do {
-                let returnedUserData = try await AuthManager.shared.createUser(
-                    email: email, password: password)
-                print("Created user: \(returnedUserData.uid)")
-            } catch {
-                print("Error: \(error)")
-            }
+        let returnedUserData = try await AuthManager.shared.createUser(
+            email: email, password: password)
+        print("Created user: \(returnedUserData.uid)")
+    }
+
+    func signIn() async throws {
+        guard !email.isEmpty, !password.isEmpty else {
+            print("Sign In Error: No email or password found.")
+            return
         }
+
+        let returnedUserData = try await AuthManager.shared.signIn(
+            email: email, password: password)
+        print("Sign In Success: \(returnedUserData)")
     }
 }
 
 struct SignInEmailView: View {
-    @State private var viewModal = SignInWithEmailViewModel()
+    @State private var viewModel = SignInWithEmailViewModel()
+    @Binding var showSignInView: Bool
 
     var body: some View {
         VStack {
-            TextField("Email...", text: $viewModal.email)
+            TextField("Email...", text: $viewModel.email)
                 .padding()
                 .background(.secondary.opacity(0.3))
                 .cornerRadius(30)
 
-            SecureField("Password", text: $viewModal.password)
+            SecureField("Password", text: $viewModel.password)
                 .padding()
                 .background(.secondary.opacity(0.3))
                 .cornerRadius(30)
 
             Button {
-                viewModal.signIn()
+                Task {
+                    do {
+                        try await viewModel.signUp()
+                        showSignInView = false
+                        return
+                    } catch {
+                        print("Error \(error)")
+                    }
+                    
+                    do {
+                        try await viewModel.signIn()
+                        showSignInView = false
+                        return
+                    } catch {
+                        print("Error \(error)")
+                    }
+                }
             } label: {
                 Text("Sign In")
                     .font(.headline)
@@ -67,6 +89,6 @@ struct SignInEmailView: View {
 
 #Preview {
     NavigationStack {
-        SignInEmailView()
+        SignInEmailView(showSignInView: .constant(false))
     }
 }

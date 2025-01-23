@@ -9,11 +9,14 @@ import FirebaseAuth
 import SwiftUI
 
 struct AuthView: View {
+    @Binding var showSignInView: Bool
+
     var body: some View {
         VStack {
             Spacer()
+          // TODO: Create sign up flow
             NavigationLink {
-                SignInEmailView()
+                SignInEmailView(showSignInView: $showSignInView)
             } label: {
                 Text("Sign In With Email")
                     .font(.headline)
@@ -31,6 +34,6 @@ struct AuthView: View {
 
 #Preview {
     NavigationStack {
-        AuthView()
+        AuthView(showSignInView: .constant(false))
     }
 }

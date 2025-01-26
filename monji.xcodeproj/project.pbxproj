@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8051EDA22D3F2E2000D88677 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8051EDA12D3F2E2000D88677 /* GoogleService-Info.plist */; };
+		8051EDD02D41E98200D88677 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8051EDCF2D41E98200D88677 /* GoogleService-Info.plist */; };
+		8051EDD32D41EA7000D88677 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8051EDD22D41EA7000D88677 /* GoogleSignIn */; };
+		8051EDD52D41EA7000D88677 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8051EDD42D41EA7000D88677 /* GoogleSignInSwift */; };
 		805669312D3F296C00A103B4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 805669302D3F296C00A103B4 /* FirebaseAnalytics */; };
 		805669332D3F296C00A103B4 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 805669322D3F296C00A103B4 /* FirebaseAnalyticsOnDeviceConversion */; };
 		805669352D3F296C00A103B4 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 805669342D3F296C00A103B4 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -44,15 +46,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8051EDA12D3F2E2000D88677 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8051EDCF2D41E98200D88677 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		805668FF2D3F25E500A103B4 /* monji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = monji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805669102D3F25E600A103B4 /* monjiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = monjiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8056691A2D3F25E600A103B4 /* monjiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = monjiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8051EDD72D41EABA00D88677 /* Exceptions for "monji" folder in "monji" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 805668FE2D3F25E500A103B4 /* monji */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		805669012D3F25E500A103B4 /* monji */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8051EDD72D41EABA00D88677 /* Exceptions for "monji" folder in "monji" target */,
+			);
 			path = monji;
 			sourceTree = "<group>";
 		};
@@ -82,6 +97,8 @@
 				8056693B2D3F296C00A103B4 /* FirebaseAuth in Frameworks */,
 				805669312D3F296C00A103B4 /* FirebaseAnalytics in Frameworks */,
 				805669472D3F296C00A103B4 /* FirebaseFirestore in Frameworks */,
+				8051EDD52D41EA7000D88677 /* GoogleSignInSwift in Frameworks */,
+				8051EDD32D41EA7000D88677 /* GoogleSignIn in Frameworks */,
 				805669392D3F296C00A103B4 /* FirebaseAppDistribution-Beta in Frameworks */,
 				805669532D3F296C00A103B4 /* FirebaseStorage in Frameworks */,
 				8056694D2D3F296C00A103B4 /* FirebaseInstallations in Frameworks */,
@@ -116,7 +133,7 @@
 				805669132D3F25E600A103B4 /* monjiTests */,
 				8056691D2D3F25E600A103B4 /* monjiUITests */,
 				805669002D3F25E500A103B4 /* Products */,
-				8051EDA12D3F2E2000D88677 /* GoogleService-Info.plist */,
+				8051EDCF2D41E98200D88677 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +183,8 @@
 				8056694E2D3F296C00A103B4 /* FirebaseMessaging */,
 				805669502D3F296C00A103B4 /* FirebaseRemoteConfig */,
 				805669522D3F296C00A103B4 /* FirebaseStorage */,
+				8051EDD22D41EA7000D88677 /* GoogleSignIn */,
+				8051EDD42D41EA7000D88677 /* GoogleSignInSwift */,
 			);
 			productName = monji;
 			productReference = 805668FF2D3F25E500A103B4 /* monji.app */;
@@ -251,6 +270,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				8056692F2D3F296C00A103B4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8051EDD12D41EA7000D88677 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 805669002D3F25E500A103B4 /* Products */;
@@ -269,7 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8051EDA22D3F2E2000D88677 /* GoogleService-Info.plist in Resources */,
+				8051EDD02D41E98200D88677 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +474,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = monji/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -493,6 +516,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = monji/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -651,6 +677,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8051EDD12D41EA7000D88677 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 		8056692F2D3F296C00A103B4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -662,6 +696,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8051EDD22D41EA7000D88677 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8051EDD12D41EA7000D88677 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		8051EDD42D41EA7000D88677 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8051EDD12D41EA7000D88677 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
 		805669302D3F296C00A103B4 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8056692F2D3F296C00A103B4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -21,10 +21,53 @@ struct AuthDataResultModel {
     }
 }
 
+struct GoogleSignInResultModel {
+    let idToken: String
+    let accessToken: String
+}
+
 final class AuthManager {
     static let shared = AuthManager()
 
     private init() {}
+
+    func getUser() throws -> AuthDataResultModel {
+        guard let user = Auth.auth().currentUser else {
+            throw URLError(.badServerResponse)
+        }
+
+        return AuthDataResultModel(user: user)
+    }
+
+    func signOut() throws {
+        try Auth.auth().signOut()
+    }
+
+}
+
+// NOTE: Sign in with SSO
+extension AuthManager {
+    func signIn(with credential: AuthCredential) async throws
+        -> AuthDataResultModel
+    {
+        let authDataResult = try await Auth.auth().signIn(with: credential)
+
+        return AuthDataResultModel(user: authDataResult.user)
+    }
+
+    @discardableResult
+    func signInWithGoogle(with tokens: GoogleSignInResultModel) async throws
+        -> AuthDataResultModel
+    {
+        let credential = GoogleAuthProvider.credential(
+            withIDToken: tokens.idToken, accessToken: tokens.accessToken)
+
+        return try await signIn(with: credential)
+    }
+}
+
+// NOTE: Sign in with email
+extension AuthManager {
 
     @discardableResult
     func createUser(email: String, password: String) async throws
@@ -44,18 +87,6 @@ final class AuthManager {
             withEmail: email, password: password)
 
         return AuthDataResultModel(user: authDataResult.user)
-    }
-
-    func getUser() throws -> AuthDataResultModel {
-        guard let user = Auth.auth().currentUser else {
-            throw URLError(.badServerResponse)
-        }
-
-        return AuthDataResultModel(user: user)
-    }
-
-    func signOut() throws {
-        try Auth.auth().signOut()
     }
 
     func resetPassword(email: String) async throws {
@@ -79,4 +110,5 @@ final class AuthManager {
 
         try await user.updatePassword(to: password)
     }
+
 }
